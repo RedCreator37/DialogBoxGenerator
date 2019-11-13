@@ -1,0 +1,6 @@
+# intellij folders
+.idea
+target
+
+# vscode folders
+.vscode
