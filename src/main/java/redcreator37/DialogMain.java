@@ -20,7 +20,6 @@ public class DialogMain extends Application {
         primaryStage.setAlwaysOnTop(true);
         primaryStage.setResizable(false);
         primaryStage.show();
-
         System.gc();
     }
 

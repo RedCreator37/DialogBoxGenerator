@@ -2,7 +2,6 @@ package redcreator37;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
@@ -34,8 +33,7 @@ public class Controller extends Component {
      */
     public void addItemsToCombo() {
         String[] items = {"Information", "Warning", "Error", "Confirmation", "Generic"};
-        ObservableList<String> comboItems = FXCollections.observableArrayList(items);
-        typeCombo.setItems(comboItems);
+        typeCombo.setItems(FXCollections.observableArrayList(items));
     }
 
     /**
