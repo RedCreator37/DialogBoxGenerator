@@ -1,4 +1,4 @@
-package redcreator37;
+package com.redcreator37;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -29,7 +29,7 @@ public class Controller extends Component {
     public ComboBox<String> typeCombo;
 
     /**
-     * Add items to the dialog typo combo box
+     * Adds items to the Dialog Type combo
      */
     public void addItemsToCombo() {
         String[] items = {"Information", "Warning", "Error", "Confirmation", "Generic"};
@@ -37,15 +37,15 @@ public class Controller extends Component {
     }
 
     /**
-     * Main process (display the dialog boxes)
+     * Main process (displays the dialog boxes)
      */
     public void start() {
         String title, header, text, count, type;
-        title  = titleField.getText();
+        title = titleField.getText();
         header = headerField.getText();
-        text   = contentBox.getText();
-        count  = countField.getText();
-        type   = typeCombo.getSelectionModel().getSelectedItem();
+        text = contentBox.getText();
+        count = countField.getText();
+        type = typeCombo.getSelectionModel().getSelectedItem();
         String[] buttonText = buttonsField.getText().split(" ");
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 
@@ -63,20 +63,20 @@ public class Controller extends Component {
         // display the dialogs
         try {
             for (int i = Integer.parseInt(count); i > 0; i--)
-                 Platform.runLater(() -> {
-                     Alert alert = new Alert(extractAlertType(type));
-                     alert.initModality(Modality.NONE);
-                     alert.setTitle(title);
-                     alert.setHeaderText(header);
-                     alert.setContentText(text);
-                     alert.getDialogPane().getButtonTypes().setAll(buttons);
+                Platform.runLater(() -> {
+                    Alert alert = new Alert(extractAlertType(type));
+                    alert.initModality(Modality.NONE);
+                    alert.setTitle(title);
+                    alert.setHeaderText(header);
+                    alert.setContentText(text);
+                    alert.getDialogPane().getButtonTypes().setAll(buttons);
 
-                     if (randomPosCBox.isSelected()) {
-                         alert.setX(ThreadLocalRandom.current().nextInt((int) bounds.getMaxX() + 1));
-                         alert.setY(ThreadLocalRandom.current().nextInt((int) bounds.getMaxY() + 1));
-                     }
-                     alert.showAndWait();
-                 });
+                    if (randomPosCBox.isSelected()) {
+                        alert.setX(ThreadLocalRandom.current().nextInt((int) bounds.getMaxX() + 1));
+                        alert.setY(ThreadLocalRandom.current().nextInt((int) bounds.getMaxY() + 1));
+                    }
+                    alert.showAndWait();
+                });
         } catch (NumberFormatException | NullPointerException e) {
             // caused by invalid input so ignore it
         }
@@ -86,7 +86,7 @@ public class Controller extends Component {
     }
 
     /**
-     * Return the correct alert type based on the text inserted.
+     * Returns the alert type based on this string.
      *
      * @param str the input string
      * @return AlertType based on the input string or "none" if no
@@ -108,7 +108,7 @@ public class Controller extends Component {
     }
 
     /**
-     * Set the main window as top-most if "keep on top" is selected
+     * Toggles the Top Most property for the main window
      */
     public void setTopMost() {
         Stage stage = (Stage) topMostCBox.getScene().getWindow();
@@ -116,14 +116,14 @@ public class Controller extends Component {
     }
 
     /**
-     * Hide the main window but don't close the dialog boxes
+     * Hides the main window
      */
     public void hideMainWin() {
         topMostCBox.getScene().getWindow().hide();
     }
 
     /**
-     * Close the program
+     * Ends the program, closing all open dialog boxes in the process
      */
     public void close() {
         System.exit(0);

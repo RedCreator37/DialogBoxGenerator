@@ -1,4 +1,4 @@
-package redcreator37;
+package com.redcreator37;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

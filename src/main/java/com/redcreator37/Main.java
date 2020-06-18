@@ -1,4 +1,4 @@
-package redcreator37;
+package com.redcreator37;
 
 public class Main {
 
